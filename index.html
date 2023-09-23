@@ -345,11 +345,18 @@
    <script>
   const scriptURL = 'https://script.google.com/macros/s/AKfycbzgh2NDtFeS6T6EQyCvs21QN17_NZVos4Uc8qDtBeS5d0VfmG_DuJ6ryIdzll1w09G4Dg/exec'
   const form = document.forms['submit-to-google-sheet']
+  const msg = docment.getElementById("msg")  
 
   form.addEventListener('submit', e => {
     e.preventDefault()
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
+      .then(response => {
+       msg.innerHTML = "Message sent successfully"
+       setTimeoutfunction({
+        msg.innerHTML = " "
+       },5000)
+   form.reset()
+      })
       .catch(error => console.error('Error!', error.message))
   })
 </script>
