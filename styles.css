@@ -934,3 +934,8 @@ footer span a:hover {
     line-height: 38px;
   }
 }
+#span{
+  color:#1a6ad2;
+  margin-top: -40px;
+  display: block;
+}
