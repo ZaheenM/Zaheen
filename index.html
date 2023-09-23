@@ -304,7 +304,7 @@
             <!-- Reach -->
             <div class="column right">
               <div class="text">Message me</div>
-              <form action="#">
+              <form name="submit-to-google-sheet">
                 <div class="fields">
                   <div class="field name">
                     <input type="text" placeholder="Your Name" required>
@@ -340,5 +340,17 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script>
     <script src="script.js"></script>
+   
+   <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxwlyXWq_wtDjC3NDCOWwYp5cYBUmTT4ACgv-kna3-JA5ZBVoPUglVTfIMyoqv-OrtKuw/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
   </body>
 </html>
